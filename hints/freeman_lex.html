@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        <p>
+            Catch an idea 💡! Pop element from the sequence. Than till the end of the sequence, pop elements, compare each with the very first one popped and calculate (and keep) the last index of common part. Return a slice of the first element till the final index. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, what should I start from?
+    </div>
+    <div class="answer">
+        <p>
+            Pop the last element (it may be any element) from the sequence and calculate its length. It's your starting index of common part. For one word it's the same whole word.
+        </p>
+        <pre class="brush: python">
+res = arr.pop()
+l = len(res)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do next?
+    </div>
+    <div class="answer">
+        <p>
+            Use <b class="code">while</b> loop for <b class="code">arr</b> and pop elements from it.
+        </p>
+        <pre class="brush: python">
+while arr:
+    sec, i = arr.pop(), 0
+        </pre>
+        <p>
+            You also need to declare a new variable <b class="code">i</b> for each new <b class="code">sec</b> to find out later the last common index between these two words <b class="code">res</b> and <b class="code">sec</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I still need a hint.
+    </div>
+    <div class="answer">
+        <p>
+            You need to increment this <b class="code">i</b> until it's smaller the minimum of current value of maximum index <b class="code">l</b> and length of the <b class="code">sec</b> element and until characters at this index at both elements (<b class="code">res, sec</b>) are the same. Let's write it.
+        </p>
+        <pre class="brush: python">
+while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        How to finish the code?
+    </div>
+    <div class="answer">
+        <p>
+            It's almost end. Now you need to update your stored maximum index of common part with a new value of <b class="code">i</b>. 
+        </p>
+        <pre class="brush: python">
+l = i
+        </pre>
+        <p>
+            Here, you can make immediate checking. If <b class="code">l == 0</b> it means no common part left already and you may return empty string without further popping. Combine this statement with above one using <a target="_blank" href="https://realpython.com/python-walrus-operator/">walrus</a> operator.
+        </p>
+        <pre class="brush: python">
+if not (l:= i): return ""
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>
+            You just need to join all previous hints, return a slice of the first element till final common index and wrap your code into function expression. Using type hints for input and output data are highly recommended.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def longest_prefix(arr: list[str]) -> str:
+
+    res = arr.pop()
+    l = len(res)
+    while arr:
+        sec, i = arr.pop(), 0
+        while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        if not (l:= i): return ""
+        
+    return res[:l]
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it 👍!
+    </div>
+</div>
+</body>

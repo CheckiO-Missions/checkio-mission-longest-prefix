@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    Ta funkcja powinna przyjmować tablicę {% if is_js %}{% else %} listę{% endif %} ciągów i określać najdłuższy wspólny prefiks wśród wszystkich ciągów. Jeśli nie ma wspólnego prefiksu, powinna zwrócić pusty ciąg.  
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}longest-common-prefix.png" alt="example" style="max-height: 200px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Dane wejściowe:</strong> {% if is_js %}Array{% else %}List{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> ciągów znaków <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> String <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Jak to jest używane:</strong>
+    <ul>
+        <li><i>w systemach autouzupełniania do sugerowania najbardziej prawdopodobnego uzupełnienia;</i></li>
+        <li><i>w systemach plików do sugerowania nazw katalogów na podstawie bieżących danych wejściowych;</i></li>
+        <li><i>w dopasowywaniu sekwencji DNA do identyfikacji wspólnych podciągów.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->

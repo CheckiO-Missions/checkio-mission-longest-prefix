@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać pomysł 💡! Proszę wyrzucić element z sekwencji. Następnie do końca sekwencji wyskakują elementy, porównują każdy z nich z pierwszym wyskakującym i obliczają (i zachowują) ostatni indeks części wspólnej. Proszę zwrócić wycinek pierwszego elementu do ostatniego indeksu. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę wybrać ostatni element (może to być dowolny element) z sekwencji i obliczyć jego długość. Jest to indeks początkowy części wspólnej. Dla jednego słowa jest to to samo całe słowo.
+        </p>
+        <pre class="brush: python">
+res = arr.pop()
+l = len(res)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę użyć pętli <b class="code">while</b> dla <b class="code">arr</b> i pobrać z niej elementy.
+        </p>
+        <pre class="brush: python">
+while arr:
+    sec, i = arr.pop(), 0
+        </pre>
+        <p>
+            Proszę również zadeklarować nową zmienną <b class="code">i</b> dla każdego nowego <b class="code">sec</b>, aby później znaleźć ostatni wspólny indeks między tymi dwoma słowami <b class="code">res</b> i <b class="code">sec</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nadal potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            Musi Pan inkrementować ten <b class="code">i</b> aż będzie mniejszy od minimum aktualnej wartości maksymalnego indeksu <b class="code">l</b> i długości elementu <b class="code">sec</b> i aż znaki na tym indeksie w obu elementach (<b class="code">res, sec</b>) będą takie same. Proszę to napisać.
+        </p>
+        <pre class="brush: python">
+while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak dokończyć kod?
+    </div>
+    <div class="answer">
+        <p>
+            To już prawie koniec. Teraz należy zaktualizować przechowywany maksymalny indeks części wspólnej o nową wartość <b class="code">i</b>. 
+        </p>
+        <pre class="brush: python">
+l = i
+        </pre>
+        <p>
+            Tutaj można dokonać natychmiastowego sprawdzenia. Jeśli <b class="code">l == 0</b> oznacza to, że nie pozostała już żadna część wspólna i można zwrócić pusty ciąg bez dalszego wyskakiwania. Proszę połączyć tę instrukcję z powyższą za pomocą operatora <a target="_blank" href="https://realpython.com/python-walrus-operator/">walrus</a>.
+        </p>
+        <pre class="brush: python">
+if not (l:= i): return ""
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystkie poprzednie podpowiedzi, zwrócić wycinek pierwszego elementu do końcowego wspólnego indeksu i zawinąć kod w wyrażenie funkcyjne. Korzystanie z podpowiedzi typu dla danych wejściowych i wyjściowych jest wysoce zalecane.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def longest_prefix(arr: list[str]) -> str:
+
+    res = arr.pop()
+    l = len(res)
+    while arr:
+        sec, i = arr.pop(), 0
+        while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        if not (l:= i): return ""
+        
+    return res[:l]
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>

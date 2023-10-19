@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Attrapez une idée 💡! Retirez un élément de la séquence. Puis jusqu'à la fin de la séquence, éclater des éléments, comparer chacun avec le tout premier éclaté et calculer (et garder) le dernier indice de la partie commune. Retournez une tranche du premier élément jusqu'à l'indice final. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Retirez le dernier élément de la séquence et calculez sa longueur. C'est votre indice de départ de la partie commune. Pour un mot, il s'agit du même mot entier.
+        </p>
+        <pre class="brush: javascript">
+let res = arr.pop(), l = res.length;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite?
+    </div>
+    <div class="answer">
+        <p>
+            Utilisez la boucle <b class="code">while</b> pour <b class="code">arr</b> et extrayez-en des éléments.
+        </p>
+        <pre class="brush: javascript">
+while (arr.length) {
+    let sec = arr.pop(), i = 0;
+    ...
+}
+        </pre>
+        <p>
+            Vous devez également déclarer une nouvelle variable <b class="code">i</b> pour chaque nouveau mot <b class="code">sec</b> afin de déterminer ultérieurement le dernier indice commun entre ces deux mots <b class="code">res</b> et <b class="code">sec</b>. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        J'ai encore besoin d'un indice.
+    </div>
+    <div class="answer">
+        <p>
+            Vous devez incrémenter ce <b class="code">i</b> jusqu'à ce qu'il soit plus petit que le minimum de la valeur actuelle de l'index maximum <b class="code">l</b> et de la longueur de l'élément <b class="code">sec</b> et jusqu'à ce que les caractères à cet index dans les deux éléments (<b class="code">res, sec</b>) soient les mêmes. Écrivons-le.
+        </p>
+        <pre class="brush: javascript">
+while (i < Math.min(l, sec.length) && res[i] === sec[i]) i++;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Comment terminer le code?
+    </div>
+    <div class="answer">
+        <p>
+            C'est presque terminé. Vous devez maintenant mettre à jour l'indice maximal stocké de la partie commune avec une nouvelle valeur de <b class="code">i</b>. 
+        </p>
+        <pre class="brush: javascript">
+l = i
+        </pre>
+        <p>
+            Ici, vous pouvez procéder à une vérification immédiate. Si <b class="code">l == 0</b>, cela signifie qu'il n'y a plus de partie commune et vous pouvez renvoyer une chaîne vide sans autre forme de procès.
+        </p>
+        <pre class="brush: javascript">
+if (!(l = i)) return "";
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de joindre tous les indices précédents, de renvoyer une tranche du premier élément jusqu'à l'indice commun final et d'envelopper votre code dans une expression de fonction. Il est fortement recommandé d'utiliser des indices de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function longestPrefix(arr: string[]): string {
+
+    let res = arr.pop(), l = res.length;
+    while (arr.length) {
+        let sec = arr.pop(), i = 0;
+        while (i < Math.min(l, sec.length) && res[i] === sec[i]) i++;
+        if (!(l = i)) return "";
+    }
+    return res.slice(0, l);
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être un vrai 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            En utilisant la fonction <b class="code">reduce</b> pour comparer chaque mot avec la base et ne garder que la partie commune comme mot de base.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function longestPrefix(arr: string[]): string {
+
+    if (!arr.length) return "";
+    return arr.reduce((prev, next) => {
+        let i = 0;
+        while (i < prev.length && i < next.length && prev[i] === next[i]) i++;
+        return prev.substring(0, i);
+    });
+}
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>

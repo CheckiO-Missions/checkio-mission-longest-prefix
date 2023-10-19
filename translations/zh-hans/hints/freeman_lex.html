@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！从序列中弹出元素。然后直到序列结束，弹出元素，将每个元素与弹出的第一个元素进行比较，并计算（并保留）共同部分的最后一个索引。返回第一个元素直到最后一个索引的切片。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从哪里开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            从序列中取出最后一个元素（可以是任何元素）并计算其长度。这是你的共同部分的起始索引。对于一个单词来说，它就是整个单词。
+        </p>
+        <pre class="brush: python">
+res = arr.pop()
+l = len(res)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        接下来要做什么？
+    </div>
+    <div class="answer">
+        <p>
+            使用<b class="code">while</b> 循环<b class="code">arr</b> 并从中弹出元素。
+        </p>
+        <pre class="brush: python">
+while arr:
+    sec, i = arr.pop(), 0
+        </pre>
+        <p>
+            您还需要为每个新的<b class="code">sec</b> 声明一个新变量<b class="code">i</b> ，以便稍后找出这两个词<b class="code">res</b> 和<b class="code">sec</b> 之间的最后一个公共索引。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我还需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            您需要递增<b class="code">i</b> ，直到它小于最大索引<b class="code">l</b> 的当前值和<b class="code">sec</b> 元素长度的最小值，并且直到两个元素 (<b class="code">res, sec</b>) 中该索引处的字符相同。我们来写一下。
+        </p>
+        <pre class="brush: python">
+while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何完成代码？
+    </div>
+    <div class="answer">
+        <p>
+            就快结束了。现在，您需要使用新值<b class="code">i</b> 更新已存储的公共部分最大索引。 
+        </p>
+        <pre class="brush: python">
+l = i
+        </pre>
+        <p>
+            在此，您可以立即进行检查。如果<b class="code">l == 0</b> ，则表示已经没有公共部分了，可以返回空字符串，而无需进一步弹出。使用<a target="_blank" href="https://realpython.com/python-walrus-operator/">walrus</a> 操作符将此语句与上述语句合并。
+        </p>
+        <pre class="brush: python">
+if not (l:= i): return ""
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            你只需连接之前的所有提示，返回第一个元素的切片，直到最后的公共索引，然后将代码封装成函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def longest_prefix(arr: list[str]) -> str:
+
+    res = arr.pop()
+    l = len(res)
+    while arr:
+        sec, i = arr.pop(), 0
+        while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        if not (l:= i): return ""
+        
+    return res[:l]
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>

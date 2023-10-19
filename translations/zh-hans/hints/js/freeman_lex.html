@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！从序列中弹出元素。然后直到序列结束，弹出元素，将每个元素与弹出的第一个元素进行比较，并计算（并保留）共同部分的最后一个索引。返回第一个元素直到最后一个索引的切片。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从哪里开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            从序列中取出最后一个元素并计算其长度。这就是共同部分的起始索引。对于一个单词来说，它就是整个单词。
+        </p>
+        <pre class="brush: javascript">
+let res = arr.pop(), l = res.length;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        接下来要做什么？
+    </div>
+    <div class="answer">
+        <p>
+            使用<b class="code">while</b> 循环<b class="code">arr</b> 并从中弹出元素。
+        </p>
+        <pre class="brush: javascript">
+while (arr.length) {
+    let sec = arr.pop(), i = 0;
+    ...
+}
+        </pre>
+        <p>
+            您还需要为每个新的<b class="code">sec</b> 声明一个新变量<b class="code">i</b> ，以便稍后找出这两个词<b class="code">res</b> 和<b class="code">sec</b> 之间的最后一个公共索引。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我还需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            您需要递增<b class="code">i</b> ，直到它小于最大索引<b class="code">l</b> 的当前值和<b class="code">sec</b> 元素长度的最小值，并且直到两个元素 (<b class="code">res, sec</b>) 中该索引处的字符相同。我们来写一下。
+        </p>
+        <pre class="brush: javascript">
+while (i < Math.min(l, sec.length) && res[i] === sec[i]) i++;
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        如何完成代码？
+    </div>
+    <div class="answer">
+        <p>
+            就快结束了。现在，您需要使用新值<b class="code">i</b> 更新已存储的公共部分最大索引。 
+        </p>
+        <pre class="brush: javascript">
+l = i
+        </pre>
+        <p>
+            在此，您可以立即进行检查。如果<b class="code">l == 0</b> ，则表示已经没有公共部分了，可以返回空字符串，而无需进一步弹出。
+        </p>
+        <pre class="brush: javascript">
+if (!(l = i)) return "";
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            你只需连接之前的所有提示，返回第一个元素的切片，直到最后的公共索引，然后将代码封装成函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>以下是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function longestPrefix(arr: string[]): string {
+
+    let res = arr.pop(), l = res.length;
+    while (arr.length) {
+        let sec = arr.pop(), i = 0;
+        while (i < Math.min(l, sec.length) && res[i] === sec[i]) i++;
+        if (!(l = i)) return "";
+    }
+    return res.slice(0, l);
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        告诉我更多解决方案！<br />
+        因为我想成为真正的 🥇 Javascript 英雄！
+    </div>
+    <div class="answer">
+        <p>当然，抓紧时间！</p>
+        <p>
+            使用<b class="code">reduce</b> 函数将每个单词与基词进行比较，只保留共同部分作为基词。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function longestPrefix(arr: string[]): string {
+
+    if (!arr.length) return "";
+    return arr.reduce((prev, next) => {
+        let i = 0;
+        while (i < prev.length && i < next.length && prev[i] === next[i]) i++;
+        return prev.substring(0, i);
+    });
+}
+        </pre>
+        </div>
+        <p>点击任务菜单中的<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>

@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    Cette fonction doit prendre un tableau {% if is_js %}{% else %} liste{% endif %} de chaînes de caractères et déterminer le préfixe commun le plus long parmi toutes les chaînes. S'il n'y a pas de préfixe commun, elle doit renvoyer une chaîne vide.  
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}longest-common-prefix.png" alt="example" style="max-height: 200px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> {% if is_js %}Tableau{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> de chaînes de caractères <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Chaîne <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Comment c'est utilisé:</strong>
+    <ul>
+        <li><i>dans les systèmes d'autocomplétion pour suggérer la complétion la plus probable;</i></li>
+        <li><i>dans les systèmes de fichiers pour suggérer des noms de répertoires en fonction de l'entrée actuelle;</i></li>
+        <li><i>dans l'alignement des séquences d'ADN pour identifier les sous-chaînes communes.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->

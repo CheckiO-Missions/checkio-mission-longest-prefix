@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    Diese Funktion sollte ein {% if is_js %}Array{% else %}Liste{% endif %} von Zeichenketten nehmen und das längste gemeinsame Präfix unter allen Zeichenketten ermitteln. Wenn es kein gemeinsames Präfix gibt, sollte sie eine leere Zeichenkette zurückgeben.  
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}longest-common-prefix.png" alt="example" style="max-height: 200px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> von Zeichenketten <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> String <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Wie es verwendet wird:</strong>
+    <ul>
+        <li><i>in Autovervollständigungssystemen, um die wahrscheinlichste Vervollständigung vorzuschlagen;</i></li>
+        <li><i>in Dateisystemen, um auf der Grundlage der aktuellen Eingabe Verzeichnisnamen vorzuschlagen;</i></li>
+        <li><i>beim DNA-Sequenzabgleich, um gemeinsame Teilstrings zu identifizieren.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->

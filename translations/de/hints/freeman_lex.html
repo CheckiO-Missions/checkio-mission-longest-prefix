@@ -1,0 +1,135 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Fangen Sie eine Idee 💡! Ziehen Sie ein Element aus der Sequenz. Dann holen Sie bis zum Ende der Sequenz Elemente heraus, vergleichen jedes mit dem allerersten herausgeholten Element und berechnen (und behalten) den letzten Index des gemeinsamen Teils. Geben Sie einen Ausschnitt des ersten Elements bis zum letzten Index zurück. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, womit soll ich beginnen?
+    </div>
+    <div class="answer">
+        <p>
+            Nehmen Sie das letzte Element (es kann ein beliebiges Element sein) aus der Sequenz und berechnen Sie seine Länge. Das ist Ihr Startindex für den gemeinsamen Teil. Bei einem Wort ist es das gleiche ganze Wort.
+        </p>
+        <pre class="brush: python">
+res = arr.pop()
+l = len(res)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was ist als nächstes zu tun?
+    </div>
+    <div class="answer">
+        <p>
+            Verwenden Sie die Schleife <b class="code">while</b> für <b class="code">arr</b> und holen Sie Elemente daraus hervor.
+        </p>
+        <pre class="brush: python">
+while arr:
+    sec, i = arr.pop(), 0
+        </pre>
+        <p>
+            Sie müssen auch eine neue Variable <b class="code">i</b> für jedes neue <b class="code">sec</b> deklarieren, um später den letzten gemeinsamen Index zwischen diesen beiden Wörtern <b class="code">res</b> und <b class="code">sec</b> herauszufinden. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich brauche noch einen Hinweis.
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen diesen <b class="code">i</b> so lange inkrementieren, bis er kleiner ist als das Minimum aus dem aktuellen Wert des maximalen Index <b class="code">l</b> und der Länge des Elements <b class="code">sec</b> und bis die Zeichen an diesem Index bei beiden Elementen (<b class="code">res, sec</b>) gleich sind. Lassen Sie uns das schreiben.
+        </p>
+        <pre class="brush: python">
+while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie wird der Code fertiggestellt?
+    </div>
+    <div class="answer">
+        <p>
+            Das ist fast das Ende. Jetzt müssen Sie Ihren gespeicherten Maximalindex des gemeinsamen Teils mit einem neuen Wert von <b class="code">i</b> aktualisieren. 
+        </p>
+        <pre class="brush: python">
+l = i
+        </pre>
+        <p>
+            Hier können Sie sofort eine Überprüfung vornehmen. Wenn <b class="code">l == 0</b> ist, bedeutet dies, dass kein gemeinsamer Teil mehr vorhanden ist und Sie können eine leere Zeichenkette zurückgeben, ohne dass ein weiteres Popping erforderlich ist. Kombinieren Sie diese Anweisung mit der obigen mit dem Operator <a target="_blank" href="https://realpython.com/python-walrus-operator/">walrus</a>.
+        </p>
+        <pre class="brush: python">
+if not (l:= i): return ""
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nur alle vorherigen Hinweise zusammenführen, einen Ausschnitt des ersten Elements bis zum letzten gemeinsamen Index zurückgeben und Ihren Code in einen Funktionsausdruck verpacken. Die Verwendung von Typ-Hinweisen für Eingabe- und Ausgabedaten wird dringend empfohlen.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def longest_prefix(arr: list[str]) -> str:
+
+    res = arr.pop()
+    l = len(res)
+    while arr:
+        sec, i = arr.pop(), 0
+        while i < min(l, len(sec)) and res[i] == sec[i]: i += 1
+        if not (l:= i): return ""
+        
+    return res[:l]
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>
+            
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>

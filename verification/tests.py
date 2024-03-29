@@ -60,5 +60,13 @@ TESTS = {
             "input": [["sunflower", "sunday", "sundial"]],
             "answer": "sun"
         },
+        {
+            "input": [["aa", "ba"]],
+            "answer": ""
+        },
+        {
+            "input": [["a", "ba"]],
+            "answer": ""
+        },
     ]
 }
